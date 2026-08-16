@@ -1,6 +1,7 @@
 package de.demowebshop.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ public class LoginTests extends TestBase{
         email();
         password();
         log_in_click();
-        Assert.assertTrue(isElementPresent(By.cssSelector(".ico-logout")));
+        Assert.assertTrue(isElementPresent(By.cssSelector(".ico-logout")));// geters dobawitj
 
     }
     @Test
@@ -20,7 +21,8 @@ public class LoginTests extends TestBase{
         driver.findElement(By.cssSelector("#Email")).sendKeys("irinafengshui71@gmail.com");
         driver.findElement(By.cssSelector("#Password")).sendKeys("WrongPassword123!");
         log_in_click();
-        Assert.assertTrue(isElementPresent(By.cssSelector("div[class='validation-summary-errors'] span")));
+        WebElement errorMessage = driver.findElement(By.cssSelector("div[class='validation-summary-errors'] span"));
+        assert  errorMessage.isDisplayed(): "Login was unsuccessful. Please correct the errors and try again.";
     }
     @Test
     public void loginWithWrongEmailTest(){
@@ -28,7 +30,9 @@ public class LoginTests extends TestBase{
         driver.findElement(By.cssSelector("#Email")).sendKeys("Wrongemail@email.com");
         driver.findElement(By.cssSelector("#Password")).sendKeys("Aa123456!");
         log_in_click();
-        Assert.assertTrue(isElementPresent(By.cssSelector("div[class='validation-summary-errors'] span")));
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("div[class='validation-summary-errors'] span"));
+        assert  errorMessage.isDisplayed(): "Login was unsuccessful. Please correct the errors and try again.";
     }
 
     public void log_in_click() {
