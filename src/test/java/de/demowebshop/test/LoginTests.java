@@ -12,7 +12,7 @@ public class LoginTests extends TestBase{
         email();
         password();
         log_in_click();
-        Assert.assertTrue(isElementPresent(By.cssSelector(".ico-logout")));// geters dobawitj
+        Assert.assertTrue(isElementPresent(By.cssSelector("input[value='Log in']")));// geters dobawitj
 
     }
     @Test

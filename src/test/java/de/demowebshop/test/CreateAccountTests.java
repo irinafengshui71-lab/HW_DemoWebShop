@@ -13,20 +13,18 @@ public class CreateAccountTests extends TestBase{
 
 
     @Test
-    public void newUserRegisterPositiveTest(String password){
+    public void newUserRegisterPositiveTest(){
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
+        String password = "Aa12345!";
         register(By.cssSelector(".ico-register"));
-        
         firstname(By.xpath("(//input[@id='FirstName'])[1]"));
         lastname(By.xpath("//input[@id='LastName']"));
-        newemail(By.xpath("//input[@id='Email']"), "irinafengshui741@gmail.com");
-
+        newemail(By.xpath("//input[@id='Email']"), newEmail());
         newemail(By.cssSelector("#Password"), password);
-
         newemail(By.cssSelector("#ConfirmPassword"), password);
-
         register(By.cssSelector("#register-button"));
-
-        Assert.assertTrue(isElementPresent(By.xpath(".ico-logout")));
+        Assert.assertTrue(isElementPresent(By.xpath("input[value='Continue']")));
+        driver.findElement(By.cssSelector(".ico-logout")).click();
 
 
     }
@@ -53,7 +51,11 @@ public class CreateAccountTests extends TestBase{
 
     }
 
-
+/*
+img[title='Show details for Computing and Internet']// buch auswälen
+#add-to-cart-button-13 //na6atj na add to cart buton
+input[value='Add to cart'] // wibratj laptop
+ */
 
 
 

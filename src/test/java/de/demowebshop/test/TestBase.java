@@ -45,15 +45,21 @@ public class TestBase {
     }
 
     public void lastname(By lname) {
-        newemail(lname, "Schäfer");
+        newemail(lname, "Musterman");
     }
 
     public void firstname(By fname) {
-        newemail(fname, "Irina");
+        newemail(fname, "Max");
     }
 
     public void register(By locator) {
         driver.findElement(locator).click();
+    }
+    public String newEmail() {
+        int i = (int) ((System.currentTimeMillis() / 1000) % 3600);
+        String email;
+        email = "Max" + i + "@gmail.com";
+        return email;
     }
 }
 
