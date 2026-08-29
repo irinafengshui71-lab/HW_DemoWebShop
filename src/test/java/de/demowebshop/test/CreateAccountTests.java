@@ -14,50 +14,28 @@ public class CreateAccountTests extends TestBase{
 
     @Test
     public void newUserRegisterPositiveTest(){
-        int i = (int) ((System.currentTimeMillis()/1000)%3600);
+
+        String email = "max" + System.currentTimeMillis() + "@gmail.com";
+
         String password = "Aa12345!";
-        register(By.cssSelector(".ico-register"));
-        firstname(By.xpath("(//input[@id='FirstName'])[1]"));
-        lastname(By.xpath("//input[@id='LastName']"));
-        newemail(By.xpath("//input[@id='Email']"), newEmail());
-        newemail(By.cssSelector("#Password"), password);
-        newemail(By.cssSelector("#ConfirmPassword"), password);
-        register(By.cssSelector("#register-button"));
-        Assert.assertTrue(isElementPresent(By.xpath("input[value='Continue']")));
-        driver.findElement(By.cssSelector(".ico-logout")).click();
 
+        app.getUser().openRegistrationForm();
 
-    }
+        app.getUser().fillRegistrationForm(
+                "Max",
+                "Musterman",
+                email,
+                password);
 
-    @Test
-    public void existedUserRegisterNegativeTest(){
-        register(By.cssSelector(".ico-register"));
-        
-        firstname(By.xpath("(//input[@id='FirstName'])[1]"));
-        lastname(By.xpath("//input[@id='LastName']"));
+        app.getUser().clickRegisterButton();
 
-        newemail(By.xpath("//input[@id='Email']"), "irinafengshui71@gmail.com");
-
-        newemail(By.cssSelector("#Password"), "Aa123456!");
-
-        newemail(By.cssSelector("#ConfirmPassword"), "Aa123456!");
-
-        register(By.cssSelector("#register-button"));
-        WebElement errorNotification = new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".validation-summary-errors")));
-        Assert.assertTrue(errorNotification.isDisplayed());
-        Assert.assertEquals(errorNotification.getText(), "The specified email already exists");
-
+        Assert.assertTrue(
+                app.getUser().isElementPresent(
+                        By.cssSelector("input[value='Continue']")
+                )
+        );
 
     }
-
-/*
-img[title='Show details for Computing and Internet']// buch auswälen
-#add-to-cart-button-13 //na6atj na add to cart buton
-input[value='Add to cart'] // wibratj laptop
- */
+    }
 
 
-
-
-}

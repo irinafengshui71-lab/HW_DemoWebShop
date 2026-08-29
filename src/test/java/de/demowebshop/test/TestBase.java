@@ -1,5 +1,6 @@
 package de.demowebshop.test;
 
+import core.ApplicationManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,55 +14,24 @@ import java.time.Duration;
 
 public class TestBase {
 
-    WebDriver driver;
+   protected ApplicationManager app;
     @BeforeMethod
     public void setUp(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get("https://demowebshop.tricentis.com");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        app = new ApplicationManager();
+        app.init();
     }
-    @AfterMethod(enabled = false)
+
+
+    @AfterMethod
     public void tearDown(){
-        if (driver != null){
-            driver.quit();
+        app.stop();
         }
     }
 
-    public boolean isHomeComponentPresent(){
-        return isElementPresent(By.cssSelector("img[alt='Tricentis Demo Web Shop']"));
-    }
-    public boolean isElementPresent(By locator){
-       return driver.findElements(locator).isEmpty();
-    }
 
 
 
-    public void newemail(By locator, String text) {
-        register(locator);
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(text);
-    }
 
-    public void lastname(By lname) {
-        newemail(lname, "Musterman");
-    }
-
-    public void firstname(By fname) {
-        newemail(fname, "Max");
-    }
-
-    public void register(By locator) {
-        driver.findElement(locator).click();
-    }
-    public String newEmail() {
-        int i = (int) ((System.currentTimeMillis() / 1000) % 3600);
-        String email;
-        email = "Max" + i + "@gmail.com";
-        return email;
-    }
-}
 
 
 

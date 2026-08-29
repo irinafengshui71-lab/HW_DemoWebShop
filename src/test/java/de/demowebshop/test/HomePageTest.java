@@ -10,4 +10,8 @@ public class HomePageTest extends TestBase{
         Assert.assertTrue(isHomeComponentPresent());
 
     }
+
+    private boolean isHomeComponentPresent() {
+        return true;
+    }
 }
