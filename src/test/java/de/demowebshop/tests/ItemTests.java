@@ -8,7 +8,7 @@ public class ItemTests extends TestBase{
     @Test
     public void addItemToCartTest() {
             app.getUser().login(
-                    "your-email@gmail.com",
+                    "irinafengshui71@gmail.com",
                     "Aa123456!");
 
             String productName =

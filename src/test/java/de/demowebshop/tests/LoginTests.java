@@ -26,6 +26,10 @@ public class LoginTests extends TestBase{
         app.getUser().openLoginForm();
         app.getUser().fillLoginForm(EMAIL, "WrongPassword123!");
         app.getUser().clickLoginButton();
+        Assert.assertTrue(
+                app.getUser().isElementPresent(
+                        By.cssSelector(
+                                "div[class='validation-summary-errors'] span")));
     }
 
 
@@ -33,13 +37,14 @@ public class LoginTests extends TestBase{
         public void loginWithWrongEmailTest () {
             app.getUser().openLoginForm();
 
-            app.getUser().login(
+            app.getUser().fillLoginForm(
                     "Wrongemail@email.com",
                     PASSWORD);
+            app.getUser().clickLoginButton();
             Assert.assertTrue(
                     app.getUser().isElementPresent(
                             By.cssSelector(
-                                    "div[class='validation-summary-errors'] span")));
+                                    ".validation-summary-errors")));
         }
     }
 

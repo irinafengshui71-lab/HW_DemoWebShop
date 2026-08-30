@@ -1,4 +1,5 @@
 package core;
+import fw.HomePageHelper;
 import fw.ItemHelper;
 import fw.UserHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -11,6 +12,8 @@ public class ApplicationManager {
     private WebDriver driver;
     private UserHelper user;
     private ItemHelper item;
+    private HomePageHelper home;
+
 
     public void init() {
 
@@ -26,6 +29,7 @@ public class ApplicationManager {
 
         user = new UserHelper(driver);
         item = new ItemHelper(driver);
+        home = new HomePageHelper(driver);
     }
     public void stop() {
 
@@ -40,6 +44,9 @@ public class ApplicationManager {
 
     public ItemHelper getItem() {
         return item;
+    }
+    public HomePageHelper getHome() {
+        return home;
     }
 
 }
