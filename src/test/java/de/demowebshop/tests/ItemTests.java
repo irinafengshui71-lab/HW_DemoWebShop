@@ -1,9 +1,6 @@
-package de.demowebshop.test;
+package de.demowebshop.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ItemTests extends TestBase{
@@ -19,8 +16,9 @@ public class ItemTests extends TestBase{
 
             app.getItem().openShoppingCart();
 
-            Assert.assertTrue(
-                    app.getItem().isItemInCart(productName));
+        Assert.assertTrue(
+                app.getItem().isItemInCart(productName),
+                "Product was not added to cart: " + productName);
 
 
     }

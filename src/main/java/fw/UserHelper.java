@@ -44,4 +44,12 @@ public class UserHelper extends BaseHelper {
     public void clickRegisterButton() {
         click(By.id("register-button"));
     }
+    public void fillLoginForm(String email, String password) {
+
+        type(By.id("Email"), email);
+        type(By.id("Password"), password);
+    }
+    public void clickLoginButton() {
+        click(By.cssSelector("input[value='Log in']"));
+    }
 }

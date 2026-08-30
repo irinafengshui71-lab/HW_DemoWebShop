@@ -1,4 +1,4 @@
-package de.demowebshop.test;
+package de.demowebshop.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

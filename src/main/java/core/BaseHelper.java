@@ -22,4 +22,8 @@ public class BaseHelper {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(text);
     }
+
+    public boolean isHomeComponentPresent() {
+        return isElementPresent(By.cssSelector("img[alt='Tricentis Demo Web Shop']"));
+    }
 }

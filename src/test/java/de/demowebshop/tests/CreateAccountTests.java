@@ -1,13 +1,8 @@
-package de.demowebshop.test;
+package de.demowebshop.tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class CreateAccountTests extends TestBase{
 
@@ -31,9 +26,8 @@ public class CreateAccountTests extends TestBase{
 
         Assert.assertTrue(
                 app.getUser().isElementPresent(
-                        By.cssSelector("input[value='Continue']")
-                )
-        );
+                        By.cssSelector("input[value='Continue']")));
+        app.getUser().logout();
 
     }
     }
