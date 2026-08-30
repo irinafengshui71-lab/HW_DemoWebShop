@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class UserHelper extends BaseHelper {
+
     public UserHelper(WebDriver driver) {
         super(driver);
     }
+
     public void openRegistrationForm() {
         click(By.cssSelector(".ico-register"));
     }
@@ -17,10 +19,8 @@ public class UserHelper extends BaseHelper {
 
     public void login(String email, String password) {
         openLoginForm();
-
         type(By.id("Email"), email);
         type(By.id("Password"), password);
-
         click(By.cssSelector("input[value='Log in']"));
     }
 
@@ -41,7 +41,7 @@ public class UserHelper extends BaseHelper {
         type(By.id("ConfirmPassword"), password);
     }
 
-    public UserHelper clickRegisterButton() {
-        return this;
+    public void clickRegisterButton() {
+        click(By.id("register-button"));
     }
 }
